@@ -2,6 +2,9 @@ name: Deploy
 
 on: 
   workflow_dispatch:
+  
+env:
+  targetEnv: test
 
 jobs: 
   deploy:
@@ -26,3 +29,4 @@ jobs:
         template: ARM-Templates/container-webapp-template.json
         # Incremental (only add resources to resource group) or Complete (remove extra resources from resource group) or Validate (only validates the template).
         deploymentMode: 'Incremental'
+        parameters: webAppName=uy37ddevops-${{ env.targetEnv }}
