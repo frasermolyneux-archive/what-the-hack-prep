@@ -1,0 +1,26 @@
+name: Deploy
+
+on: 
+  workflow_dispatch:
+
+jobs: 
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Azure Login
+      uses: Azure/login@v1.4.6
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Deploy Azure Resource Manager (ARM) Template
+      uses: Azure/arm-deploy@v1.0.9
+      with:
+        # Provide the scope of the deployment. Valid values are: 'resourcegroup', 'managementgroup', 'subscription'
+        scope: 'resourcegroup'
+        # Provide the name of a resource group, only required for resource Group deployments.
+        resourceGroupName: ${{ variables.RESOURCE_GROUP }}
+        # Specify the path or URL to the Azure Resource Manager template.
+        template: ARM-Templates/container-webapp-template.json
+        # Incremental (only add resources to resource group) or Complete (remove extra resources from resource group) or Validate (only validates the template).
+        deploymentMode: 'Incremental'
