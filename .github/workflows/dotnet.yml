@@ -88,4 +88,4 @@ jobs:
         # Name of the Azure Web App
         app-name: uy37ddevops-dev
         # Applies to Web App Containers only: Specify the fully qualified container image(s) name. For example, 'myregistry.azurecr.io/nginx:latest' or 'python:3.7.2-alpine/'. For multi-container scenario multiple container image names can be provided (multi-line separated)
-        images: ${{ secrets.ACR_NAME }}/${{ env.repositoryName }}:${{ env.tag }}
+        images: ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.repositoryName }}:${{ env.tag }}
