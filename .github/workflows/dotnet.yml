@@ -106,7 +106,7 @@ jobs:
       uses: Azure/webapps-deploy@v2.2.10
       with:
         # Name of the Azure Web App
-        app-name: uy37ddevops-dev
+        app-name: uy37ddevops-test
         # Applies to Web App Containers only: Specify the fully qualified container image(s) name. For example, 'myregistry.azurecr.io/nginx:latest' or 'python:3.7.2-alpine/'. For multi-container scenario multiple container image names can be provided (multi-line separated)
         images: ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.repositoryName }}:${{ env.tag }}
         
@@ -125,6 +125,6 @@ jobs:
       uses: Azure/webapps-deploy@v2.2.10
       with:
         # Name of the Azure Web App
-        app-name: uy37ddevops-dev
+        app-name: uy37ddevops-prod
         # Applies to Web App Containers only: Specify the fully qualified container image(s) name. For example, 'myregistry.azurecr.io/nginx:latest' or 'python:3.7.2-alpine/'. For multi-container scenario multiple container image names can be provided (multi-line separated)
         images: ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.repositoryName }}:${{ env.tag }}
